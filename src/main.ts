@@ -2,26 +2,6 @@ import "./style.css"
 const inputArea = document.querySelector<HTMLTextAreaElement>("#input")!
 const calculateButton = document.querySelector<HTMLButtonElement>(".calculate")!
 
-async function answerImage(prompt: string) {
-  const body = new FormData()
-  body.append("text", prompt)
-  body.append("image_generator_version", "standard")
-  body.append("use_old_model", "false")
-  body.append("turbo", "true")
-  body.append("genius_preference", "classic")
-
-  const res = await fetch("https://api.deepai.org/api/text2img", {
-    method: "POST",
-    body,
-    headers: {
-      "Api-Key": "tryit-42662075430-0e15226c78b8d0a7f6da159148ca9f08",
-    },
-  })
-
-  const json = await res.json()
-  alert(json.output_url)
-}
-
 async function solve(expression: string): Promise<string> {
   const nasaMode =
     document.querySelector<HTMLInputElement>(".nasa-switch input")?.checked
@@ -34,7 +14,7 @@ async function solve(expression: string): Promise<string> {
   3. Try to include fractions, roots (√), and exponents (^)
   ${
     nasaMode
-      ? "4. Add a very high number of significant figures, e.g. 2.83210421133282113124234654657654746588728164"
+      ? "4. Add a very high number of significant figures, e.g. 2.5340123593873"
       : ""
   }
 

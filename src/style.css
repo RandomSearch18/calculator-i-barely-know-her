@@ -10,6 +10,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: url(./py.jpg);
+}
+
+body {
+  backdrop-filter: blur(5px) brightness(0.5);
+}
+
+.invert body {
+  backdrop-filter: blur(5px) brightness(2);
 }
 
 * {
@@ -35,6 +45,12 @@ h1 {
   margin-block: 4rem;
   overflow-x: auto;
   overflow-y: none;
+}
+
+h1,
+.subtitle {
+  color: #535bf2;
+  text-decoration: #ffe100 2px solid;
 }
 
 #app {
@@ -82,16 +98,19 @@ textarea {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 9px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 5rem;
+  width: 90vw;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-optical-sizing: auto;
   font-weight: 500;
-  font-family: inherit;
   background-color: #1a1a1a;
   color: #f9f9f9;
   cursor: pointer;
   transition: border-color 0.25s;
+  background: #535bf2;
 }
 button:hover {
   border-color: #646cff;
