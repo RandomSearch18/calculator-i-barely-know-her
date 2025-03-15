@@ -23,12 +23,20 @@ async function answerImage(prompt: string) {
 }
 
 async function solve(expression: string): Promise<string> {
+  const nasaMode =
+    document.querySelector<HTMLInputElement>(".nasa-switch input")?.checked
+
   const textPrompt = `You are a calculator that takes an expression and gives a simpler expression.
   
   Follow these steps with the provided input:
   1. Come up with a numerical answer to the maths problem
   2. Then, take the numerical answer, and create an equation that's equivalent to the answer, e.g. for 11, generate 2 * 5 + 1
   3. Try to include fractions, roots (√), and exponents (^)
+  ${
+    nasaMode
+      ? "4. Add a very high number of significant figures, e.g. 2.83210421133282113124234654657654746588728164"
+      : ""
+  }
 
   Put the final output into response tags, e.g. [res]2 * 5 + 1[endres]
   Answer in plain text. No Markdown.

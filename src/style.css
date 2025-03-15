@@ -52,6 +52,15 @@ h1 {
   filter: invert();
 }
 
+.nasa-switch {
+  font-size: 3rem;
+}
+
+.nasa-switch input {
+  width: 3em;
+  height: 3em;
+}
+
 textarea {
   color: #ffe100;
   background-color: rgb(37, 0, 139);
