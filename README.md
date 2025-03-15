@@ -1,1 +1,5 @@
-# calculator-i-barely-know-her
+# Calculator? I barely know her!
+
+Scrapyard project by James, Mish, and Jack.
+
+"me"
