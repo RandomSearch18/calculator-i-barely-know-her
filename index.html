@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,19 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1>Calculator?</h1>
+      <div class="subtitle">i barely know her</div>
+      <main>
+        <h2>Enter your calculation</h2>
+        <textarea name="input" id="input" placeholder="2^2 + 2^2"></textarea>
+        <button class="calculate">Calculate!</button>
+        <h2>Your answers</h2>
+        <div class="answers">
+          <div class="answer"></div>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
