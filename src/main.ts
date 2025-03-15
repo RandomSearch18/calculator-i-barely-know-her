@@ -56,6 +56,12 @@ calculateButton.addEventListener("click", async () => {
     return
   }
 
+  const loadingDiv = document.createElement("div")
+  loadingDiv.innerText =
+    "Invoking advanced calculation procedures. Please wait."
+  loadingDiv.className = "answer"
+  document.querySelector(".answers")?.append(loadingDiv)
+
   const actualAnswer = await solve(givenInput)
   const allAnswers = await Promise.all([
     solve((getRandomInt(1000) - 500).toString()),
@@ -73,6 +79,7 @@ calculateButton.addEventListener("click", async () => {
   })
 
   document.querySelector(".answers")?.append(...answerDivs)
+  loadingDiv.remove()
 
   document.querySelector(".answer")!.textContent = actualAnswer
 

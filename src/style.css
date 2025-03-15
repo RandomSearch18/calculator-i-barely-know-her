@@ -18,8 +18,8 @@ body {
   backdrop-filter: blur(5px) brightness(0.5);
 }
 
-.invert body {
-  backdrop-filter: blur(5px) brightness(2);
+html.invert {
+  background-image: none;
 }
 
 * {
@@ -120,15 +120,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+h2 {
+  font-size: 4rem;
+  background-color: #646cff30;
 }
