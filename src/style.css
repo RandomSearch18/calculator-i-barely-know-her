@@ -11,7 +11,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(./py.jpg);
+  background-image: url(/py.jpg);
 }
 
 body {
