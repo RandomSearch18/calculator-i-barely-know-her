@@ -28,9 +28,10 @@ async function solve(expression: string): Promise<string> {
   Follow these steps with the provided input:
   1. Come up with a numerical answer to the maths problem
   2. Then, take the numerical answer, and create an equation that's equivalent to the answer, e.g. for 11, generate 2 * 5 + 1
-  3. Try to include fractions, roots, and exponents
+  3. Try to include fractions, roots (√), and exponents (^)
 
-  Put the final output into pipe tags, e.g. <|>2 * 5 + 1</|>
+  Put the final output into response tags, e.g. [res]2 * 5 + 1[endres]
+  Answer in plain text. No Markdown.
 
   Input: <input>${expression}</value>
   `
@@ -45,7 +46,7 @@ async function solve(expression: string): Promise<string> {
   const data = await res.json()
   const response: string = data.candidates[0].content.parts[0].text
 
-  const finalOutputRegex = /<\|>(.*)<\/\|>/gm
+  const finalOutputRegex = /\[res\](.*)\[endres\]/gm
   const match = finalOutputRegex.exec(response)
   if (!match) {
     alert("Invalid response")
@@ -86,4 +87,6 @@ calculateButton.addEventListener("click", async () => {
   document.querySelector(".answers")?.append(...answerDivs)
 
   document.querySelector(".answer")!.textContent = actualAnswer
+
+  document.querySelector("html")!.classList.toggle("invert")
 })

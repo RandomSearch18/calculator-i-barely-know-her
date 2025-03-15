@@ -48,6 +48,30 @@ h1 {
   font-size: 7rem;
 }
 
+.invert {
+  filter: invert();
+}
+
+textarea {
+  color: #ffe100;
+  background-color: rgb(37, 0, 139);
+  width: 80vw;
+  height: 4ch;
+  font-size: 12rem;
+}
+
+.answer {
+  background-color: #ffe100;
+  color: darkblue;
+  font-weight: bolder;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 5rem;
+  overflow-x: auto;
+  margin-block: 20vh;
+  border: 10px hotpink solid;
+  border-style: dashed double;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
