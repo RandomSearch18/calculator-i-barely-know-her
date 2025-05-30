@@ -6,6 +6,10 @@ Scrapyard project by James, Mish, and Jack.
 
 (you just read "me")
 
+## Demo
+
+You can try it at <https://calculate-her.netlify.app/>, if we haven't fun out of free Google Gemini credits.
+
 ## Screenshot
 
 This app is really had to get a good screenshot of
