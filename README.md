@@ -12,7 +12,7 @@ You can try it at <https://calculate-her.netlify.app/>, if we haven't fun out of
 
 ## Screenshot
 
-This app is really had to get a good screenshot of
+This app is really hard to get a good screenshot of
 
 ![Screenshot 2025-03-15 at 16-37-50 Vite TS](https://github.com/user-attachments/assets/8fd17570-c8b3-48c5-9a29-d454d4fddfa8)
 
