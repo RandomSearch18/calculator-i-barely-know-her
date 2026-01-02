@@ -5,17 +5,18 @@ const corsHeaders = {
 }
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
-    const apiKey = "AIzaSyCceULl39Mo_Z9apfNugIALFfJXDqeldF0";
+	const apiUrl = "https://ai.hackclub.com/proxy/v1/chat/completions";
+    const apiKey = env.HACK_CLUB_AI_API_KEY;
     
     // Handle OPTIONS request for CORS preflight
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS, HEAD",
+        //   "Access-Control-Allow-Origin": "*",
+        //   "Access-Control-Allow-Methods": "GET, POST, OPTIONS, HEAD",
           ...corsHeaders
         },
       });
@@ -33,27 +34,31 @@ export default {
     if (request.method !== "POST") {
       return new Response("Only POST, OPTIONS, and HEAD requests are allowed", { status: 405 });
     }
-    
-    const apiUrl = "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent";
+    // {"model": "qwen/qwen3-32b", "messages": [{"role": "user", "content": "Hi"}]}
     
     // Forward the request body
     const body = await request.text();
     
     try {
-      const response = await fetch(`${apiUrl}?key=${apiKey}`, {
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
+		  "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         },
         body: body,
       });
+	  const responseData = await response.text();
+	  if (!response.ok) 
+		throw new Error(`Error (status ${response.status}): ${responseData}`);
       
-      const responseData = await response.json();
-      return new Response(JSON.stringify(responseData), {
+      return new Response(responseData, {
         headers: { "Content-Type": "application/json" , ...corsHeaders},
       });
     } catch (error) {
-      return new Response(`Error fetching Gemini API: ${error.message}`, { status: 500 });
+	  const msg = error instanceof Error ? error.message : `${error}`;
+	  console.error("Gemini API error:", msg);
+      return new Response(`Error fetching Gemini API: ${msg}`, { status: 500 });
     }
   },
 };

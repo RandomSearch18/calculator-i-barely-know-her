@@ -18,27 +18,32 @@ async function solve(expression: string): Promise<string> {
       : ""
   }
 
-  Put the final output into response tags, e.g. [res]2 * 5 + 1[endres]
+  Put the final expression into "expression" tags, e.g. <expression>2 * 5 + 1</expression>
+  You must not include anything else in the expression tags. You *MUST* include one pair of expression tags in your response.
+  DO NOT provide the expression without using expression tags, as it will fail to parse.
   Answer in plain text. No Markdown.
 
   Input: <input>${expression}</value>
   `
 
   const requestBody = {
-    contents: [{ parts: [{ text: textPrompt }] }],
+    "model": "google/gemini-2.5-flash",
+    "messages": [
+      {"role": "system", "content": textPrompt}
+    ],
   }
   const res = await fetch("https://calculate-her.mmk21-spam.workers.dev/", {
     method: "POST",
     body: JSON.stringify(requestBody),
   })
   const data = await res.json()
-  const response: string = data.candidates[0].content.parts[0].text
+  const response: string = data.choices[0].message.content
 
-  const finalOutputRegex = /\[res\](.*)\[endres\]/gm
+  const finalOutputRegex = /<expression>(.*)<\/expression>/gms
   const match = finalOutputRegex.exec(response)
   if (!match) {
     alert("Invalid response")
-    throw Error("Invalid response")
+    throw Error(`Invalid response: ${response}`)
   }
   const finalOutput = match[1]
   return finalOutput
