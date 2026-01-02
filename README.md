@@ -1,6 +1,6 @@
 # Calculator? I barely know her!
 
-Scrapyard project by James, Mish, and Jack.
+[Scrapyard](https://scrapyard.hackclub.com/) hackathon project by James, Mish, and Jack.
 
 > me
 
@@ -8,7 +8,9 @@ Scrapyard project by James, Mish, and Jack.
 
 ## Demo
 
-You can try it at <https://calculate-her.netlify.app/>, if we haven't fun out of free Google Gemini credits.
+You can try it at <https://calculate-her.netlify.app/>, ~~if we haven't fun out of free Google Gemini credits~~.
+
+Update! Now powered by [Hack Club AI](https://ai.hackclub.com). (Rate-limit is 30 calculations/hr so please be nice)
 
 ## Screenshot
 
